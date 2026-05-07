@@ -15,10 +15,11 @@ This portfolio project demonstrates comprehensive data analysis skills through t
 
 ```
 portfolio-project/
-├── 01_data_exploration.sql     # SQL queries for initial data exploration
+├── 01_data_exploration.sql     # SQL queries for initial dataset exploration
 ├── 02_user_segmentation.py     # Python script for user segmentation analysis
-├── 03_insights_report.md       # Comprehensive analysis report with findings
-└── README.MD                   # This file
+├── 03_insights_report.md       # Narrative report with findings and recommendations
+├── gaming.db                   # SQLite database containing users, bets, and sessions data
+└── README.md                   # This file
 ```
 
 ### File Descriptions
@@ -30,16 +31,22 @@ portfolio-project/
   - Revenue analysis by user segments
 
 - **`02_user_segmentation.py`**: Python script that:
-  - Loads and processes the gaming data
+  - Loads and processes the gaming dataset
   - Implements user segmentation logic
-  - Generates visualizations and statistical summaries
-  - Exports results for reporting
+  - Generates visual summaries and statistical outputs
+  - Supports downstream reporting
 
-- **`03_insights_report.md`**: Detailed analysis report including:
-  - Executive summary with key findings
-  - User segmentation breakdown
+- **`03_insights_report.md`**: Narrative report with:
+  - Executive summary and key observations
+  - User segmentation insights
   - Game performance analysis
   - Business recommendations
+
+- **`gaming.db`**: SQLite database included in the repository. It contains the core analysis tables:
+  - `users`: user identifiers, signup details, country, and segment attributes
+  - `bets`: bet records with user linkage, game type, amount, result, and timestamp
+  - `sessions`: session records with user linkage, start/end times, duration, and device context
+  - These tables support both the SQL exploration and Python segmentation workflows
 
 ## 🛠️ Technologies Used
 
@@ -54,51 +61,52 @@ portfolio-project/
 
 ### Prerequisites
 
-- Python 3.8+
-- SQLite or compatible database with gaming data
+- Python 3.8 or later
 - Required Python packages: `pandas`, `matplotlib`, `seaborn`, `numpy`
+- `gaming.db` is included in the repository root and contains the dataset used by the analysis scripts
 
 ### Setup
 
-1. **Clone the repository** (if applicable)
-2. **Navigate to the project directory**:
-   ```bash
+1. **Navigate to the project directory**:
+```bash
    cd portfolio-project
-   ```
+```
 
-3. **Install dependencies** (if using virtual environment):
-   ```bash
-   pip install pandas matplotlib seaborn numpy
-   ```
+2. **Create a virtual environment** (if you don't have one):
+```bash
+   python -m venv .venv
+   .venv\Scripts\activate
+```
+
+3. **Install dependencies**:
+```bash
+   pip install pandas numpy scipy
+```
 
 ### Execution Steps
 
-1. **Data Exploration** (SQL):
-   - Run the queries in `01_data_exploration.sql` against your gaming database
-   - Review the results to understand the dataset structure
+1. **Inspect the database**:
+   - `gaming.db` is included in the repository root and contains the dataset used for this analysis.
+   - Use SQLite tooling or a database viewer to review table structure and sample records.
 
-2. **User Segmentation** (Python):
+2. **Run the Python analysis**:
    ```bash
    python 02_user_segmentation.py
    ```
-   - This will process the data and generate segmentation results
-   - Check the output for user categories and statistics
+   - This script reads `gaming.db`, processes the data, and produces segmentation output.
 
-3. **Review Insights**:
-   - Open `03_insights_report.md` to review the complete analysis
-   - Examine the findings and business recommendations
+3. **Review the report**:
+   - Open `03_insights_report.md` to see the full analysis findings and recommendations.
 
-## 📈 Key Findings
+## 📈 Summary of Insights
 
-### User Segmentation Results
-- **High-Value Users** (25% of users): Generate 45.8% of total revenue
-- **Medium-Value Users** (50% of users): Generate 49.7% of total revenue
-- **Low-Value Users** (25% of users): Generate only 4.5% of total revenue
+### User Segmentation
+- The analysis categorizes users into distinct value segments to support targeted engagement.
+- It highlights differences in activity patterns and revenue potential across user groups.
 
 ### Game Performance
-- **Roulette**: Revenue leader with highest average bets ($115) and win rate (66.7%)
-- **Poker**: Strong engagement but lower accessibility
-- **Slots**: High volume but lower monetization potential
+- The project identifies games with the strongest engagement and revenue characteristics.
+- It supports recommendations for product focus and marketing priorities.
 
 ## 💡 Skills Demonstrated
 
